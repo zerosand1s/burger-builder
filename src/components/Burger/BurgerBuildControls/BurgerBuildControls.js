@@ -26,6 +26,9 @@ const burgerBuildControls = (props) => {
           removeIngredient={() => props.removeIngredient(control.type)}
         ></BurgerBuildControl>
       ))}
+      <button className={classes.OrderButton} disabled={!props.canOrder}>
+        ORDER NOW
+      </button>
     </div>
   );
 };

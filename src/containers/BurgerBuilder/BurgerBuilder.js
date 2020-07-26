@@ -19,7 +19,14 @@ class BurgerBuilder extends Component {
       cheese: 0,
       meat: 0
     },
-    totalPrice: 4
+    totalPrice: 4,
+    canOrder: false
+  };
+
+  toggleCanOrder = (ingredients) => {
+    const sum = Object.values(ingredients).reduce((a, b) => a + b, 0);
+
+    this.setState({ canOrder: sum > 0 });
   };
 
   addIngredientHandler = (type) => {
@@ -35,6 +42,7 @@ class BurgerBuilder extends Component {
       totalPrice: newPrice,
       ingredients: updatedIngredients
     });
+    this.toggleCanOrder(updatedIngredients);
   };
 
   removeIngredientHandler = (type) => {
@@ -54,6 +62,7 @@ class BurgerBuilder extends Component {
       totalPrice: newPrice,
       ingredients: updatedIngredients
     });
+    this.toggleCanOrder(updatedIngredients);
   };
 
   render() {
@@ -68,6 +77,7 @@ class BurgerBuilder extends Component {
         <Burger ingredients={this.state.ingredients}></Burger>
         <BurgerBuildControls
           price={this.state.totalPrice}
+          canOrder={this.state.canOrder}
           disableButtonsInfo={disableButtonsInfo}
           addIngredient={this.addIngredientHandler}
           removeIngredient={this.removeIngredientHandler}

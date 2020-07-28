@@ -26,7 +26,7 @@ const burgerBuildControls = (props) => {
           removeIngredient={() => props.removeIngredient(control.type)}
         ></BurgerBuildControl>
       ))}
-      <button className={classes.OrderButton} disabled={!props.canOrder}>
+      <button className={classes.OrderButton} disabled={!props.canOrder} onClick={props.orderHandler}>
         ORDER NOW
       </button>
     </div>

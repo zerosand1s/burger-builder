@@ -14,7 +14,7 @@ const modal = (props) => {
       >
         {props.children}
       </div>
-      <Backdrop show={props.open} closeModal={props.close}></Backdrop>
+      <Backdrop show={props.open} close={props.close}></Backdrop>
     </Aux>
   );
 };
